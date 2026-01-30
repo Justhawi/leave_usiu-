@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USIU Leave Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>USIU Leave System</h1>
+                    <p>Staff Management Portal</p>
+                </div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#about" class="nav-link">User Roles</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="btn btn-primary" id="loginBtn">Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Welcome to USIU-Africa</h2>
+                <h3 class="hero-subtitle">Leave Management System</h3>
+                <p class="hero-text">
+                    A modern, efficient, and user-friendly platform designed to streamline leave requests, 
+                    approvals, and attendance tracking for USIU-Africa staff members. Experience seamless 
+                    workforce management with our comprehensive digital solution.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+                    <button class="btn btn-primary" id="getStartedBtn">Get Started</button>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Leave Management</h4>
+                    <p class="feature-text">Effortlessly submit and track leave requests with our intuitive application system. Real-time status updates keep you informed every step of the way.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon gold">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Smart Approvals</h4>
+                    <p class="feature-text">Streamlined workflow enables managers to review and approve leave requests efficiently with comprehensive request details and one-click actions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Attendance Tracking</h4>
+                    <p class="feature-text">Automated attendance recording with comprehensive reporting capabilities. Monitor workforce presence with precision and ease.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon gold">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Analytics & Insights</h4>
+                    <p class="feature-text">Generate detailed reports and gain valuable insights on leave patterns, attendance trends, and workforce analytics.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Secure & Reliable</h4>
+                    <p class="feature-text">Built with enterprise-grade security. Role-based access control ensures data privacy and system integrity at all times.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon gold">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Email Notifications</h4>
+                    <p class="feature-text">Stay informed with automated email notifications for request submissions, approvals, and important system updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Detail Section -->
+    <section class="section alt" id="features">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Features for Modern Workforce Management</h2>
+            <p class="section-text">
+                Our system provides everything you need to manage leave requests and attendance efficiently, 
+                from submission to approval to reporting.
+            </p>
+
+            <div class="department-grid">
+                <div class="department-card">
+                    <h4 class="department-title">Multiple Leave Types</h4>
+                    <p class="department-text">
+                        Support for various leave categories including annual leave, sick leave, maternity/paternity 
+                        leave, study leave, compassionate leave, and unpaid leave. Each type is tracked separately 
+                        with customizable policies.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                        </svg>
+                        <span>7 Leave Categories</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <h4 class="department-title">Automated Calculations</h4>
+                    <p class="department-text">
+                        System automatically calculates leave duration, updates remaining balances, and tracks 
+                        usage patterns. No manual calculations needed - everything is computed in real-time 
+                        with 100% accuracy.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Real-time Balance Updates</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <h4 class="department-title">Role-Based Dashboards</h4>
+                    <p class="department-text">
+                        Customized interfaces for different user roles. Staff members see their requests and 
+                        balances, while administrators get powerful tools for approvals, analytics, and 
+                        workforce oversight.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3z"/>
+                        </svg>
+                        <span>Multi-level Access</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <h4 class="department-title">Advanced Reporting</h4>
+                    <p class="department-text">
+                        Generate comprehensive reports with filtering options by department, date range, leave 
+                        type, and status. Export data to CSV for further analysis in Excel or other tools.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                        <span>Export to CSV</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <h4 class="department-title">Mobile Responsive</h4>
+                    <p class="department-text">
+                        Access the system from any device - desktop, tablet, or smartphone. Our responsive 
+                        design ensures a seamless experience regardless of screen size or device type.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                        </svg>
+                        <span>All Devices Supported</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <h4 class="department-title">Real-time Sync</h4>
+                    <p class="department-text">
+                        Powered by Firebase, all data synchronizes instantly across all users and devices. 
+                        Changes are reflected immediately without page refreshes, ensuring everyone has 
+                        the latest information.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                        </svg>
+                        <span>Instant Updates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-text">
+                Getting started is simple. Follow these three easy steps to begin managing your leave efficiently.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div style="background: linear-gradient(135deg, var(--usiu-blue), var(--usiu-light-blue)); color: white; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; font-weight: 700; margin-bottom: 20px;">1</div>
+                    <h4 class="feature-title">Sign Up / Login</h4>
+                    <p class="feature-text">
+                        Create your account using your USIU email address or login with existing credentials. 
+                        The system automatically assigns your role and dashboard.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div style="background: linear-gradient(135deg, var(--usiu-gold), #ffc94d); color: white; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; font-weight: 700; margin-bottom: 20px;">2</div>
+                    <h4 class="feature-title">Submit Requests</h4>
+                    <p class="feature-text">
+                        Fill out a simple form specifying leave type, dates, and reason. Your remaining 
+                        balance is displayed, and the system validates your request automatically.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div style="background: linear-gradient(135deg, var(--usiu-blue), var(--usiu-light-blue)); color: white; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; font-weight: 700; margin-bottom: 20px;">3</div>
+                    <h4 class="feature-title">Track & Monitor</h4>
+                    <p class="feature-text">
+                        View real-time status updates on your dashboard. Receive notifications when 
+                        requests are approved. Access your complete history anytime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Roles Section -->
+    <section class="section alt" id="about">
+        <div class="container">
+            <h2 class="section-title">Designed for Every User</h2>
+            <p class="section-text">
+                Our Leave Management System is designed to streamline the entire leave request and approval process 
+                for USIU-Africa staff members, with specialized features for different user roles.
+            </p>
+
+            <div class="department-grid">
+                <div class="department-card">
+                    <div class="feature-icon blue" style="margin-bottom: 20px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <h4 class="department-title">For Staff Members</h4>
+                    <p class="department-text">
+                        Submit leave requests, track your leave balance in real-time, view comprehensive 
+                        attendance records, and receive instant notifications on request status changes. 
+                        All from an intuitive, easy-to-use dashboard.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Self-Service Portal</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <div class="feature-icon gold" style="margin-bottom: 20px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                        </svg>
+                    </div>
+                    <h4 class="department-title">For Managers</h4>
+                    <p class="department-text">
+                        Review and process leave requests efficiently, manage team attendance with powerful 
+                        filtering tools, generate department-specific reports, and maintain oversight of your 
+                        team's leave patterns and balances.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Management Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="department-card">
+                    <div class="feature-icon blue" style="margin-bottom: 20px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                        </svg>
+                    </div>
+                    <h4 class="department-title">For HR Department</h4>
+                    <p class="department-text">
+                        Access comprehensive analytics and insights, manage leave policies across the organization, 
+                        oversee all leave requests across departments, maintain accurate records, and ensure 
+                        compliance with institutional policies.
+                    </p>
+                    <div class="department-contact">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Administrative Control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our System?</h2>
+            <p class="section-text">
+                Experience the advantages of modern leave management with features designed for efficiency and user satisfaction.
+            </p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Save Time</h4>
+                    <p class="feature-text">Reduce paperwork and manual processes. Submit and approve requests in seconds, not days.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Increase Accuracy</h4>
+                    <p class="feature-text">Eliminate calculation errors with automated leave balance tracking and validation.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Enhanced Security</h4>
+                    <p class="feature-text">Protect sensitive employee data with enterprise-grade Firebase security and encryption.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Better Insights</h4>
+                    <p class="feature-text">Make informed decisions with visual analytics and comprehensive reporting tools.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Mobile Access</h4>
+                    <p class="feature-text">Manage leave requests on the go from any device, anywhere, anytime.</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Stay Informed</h4>
+                    <p class="feature-text">Receive instant email notifications for all important updates and status changes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section alt" id="get-started-section">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title">Ready to Get Started?</h2>
+                <p class="section-text">
+                    Join USIU-Africa staff members who are already experiencing the benefits of streamlined 
+                    leave management. Create your account today and start managing your leave efficiently.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+                    <button class="btn btn-primary" id="ctaLoginBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                        </svg>
+                        Login to Your Account
+                    </button>
+                    <button class="btn btn-secondary" id="ctaRegisterBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        Create New Account
+                    </button>
+                </div>
+                <p style="margin-top: 24px; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">
+                    Already have an account? Click "Login to Your Account" above.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Need Assistance?</h2>
+            <p class="section-text">
+                Our support team is here to help you with any questions or issues. Get in touch with us through 
+                any of the channels below.
+            </p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Email Support</h4>
+                    <p class="feature-text" style="font-weight: 600; color: var(--usiu-blue);">hr@usiu.ac.ke</p>
+                    <p class="feature-text">For general inquiries and leave policy questions</p>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Phone Support</h4>
+                    <p class="feature-text" style="font-weight: 600; color: var(--usiu-gold);">+254 730 116 000</p>
+                    <p class="feature-text">Call us during office hours for immediate assistance</p>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Visit Our Office</h4>
+                    <p class="feature-text" style="font-weight: 600; color: var(--usiu-blue);">HR Department</p>
+                    <p class="feature-text">Administration Block, USIU-Africa Main Campus</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Office Hours</h4>
+                    <p class="feature-text" style="font-weight: 600; color: var(--usiu-gold);">Mon - Fri: 8:00 AM - 5:00 PM</p>
+                    <p class="feature-text">Closed on weekends and public holidays</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Technical Support</h4>
+                    <p class="feature-text" style="font-weight: 600; color: var(--usiu-blue);">it-support@usiu.ac.ke</p>
+                    <p class="feature-text">For technical issues and system problems</p>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"/>
+                        </svg>
+                    </div>
+                    <h4 class="feature-title">Documentation</h4>
+                    <p class="feature-text" style="font-weight: 600; color: var(--usiu-gold);">User Guides Available</p>
+                    <p class="feature-text">Comprehensive guides included in the system</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px; padding: 32px; background: var(--usiu-white); border-radius: 24px; box-shadow: var(--shadow-soft);">
+                <h3 style="color: var(--usiu-blue); margin-bottom: 16px;">Frequently Asked Questions</h3>
+                <p style="color: rgba(44, 62, 80, 0.7); margin-bottom: 24px;">
+                    For common questions about leave policies, system usage, and troubleshooting, 
+                    please refer to our comprehensive documentation included with the system or contact 
+                    the HR department directly.
+                </p>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-secondary" id="contactLoginBtn">Access System</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; text-align: left; margin-bottom: 32px;">
+                <div>
+                    <h4 style="color: var(--usiu-gold); margin-bottom: 16px; font-size: 1.2rem;">USIU Leave System</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Streamlining leave management and attendance tracking for USIU-Africa. 
+                        Built with modern technology for efficiency and ease of use.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--usiu-gold); margin-bottom: 16px; font-size: 1.2rem;">Quick Links</h4>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="#home" class="link" style="color: rgba(255, 255, 255, 0.7);">Home</a>
+                        <a href="#features" class="link" style="color: rgba(255, 255, 255, 0.7);">Features</a>
+                        <a href="#how-it-works" class="link" style="color: rgba(255, 255, 255, 0.7);">How It Works</a>
+                        <a href="#about" class="link" style="color: rgba(255, 255, 255, 0.7);">About</a>
+                        <a href="#contact" class="link" style="color: rgba(255, 255, 255, 0.7);">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: var(--usiu-gold); margin-bottom: 16px; font-size: 1.2rem;">Contact Us</h4>
+                    <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">
+                        <p>📧 hr@usiu.ac.ke</p>
+                        <p>📞 +254 730 116 000</p>
+                        <p>📍 USIU-Africa Main Campus</p>
+                        <p>🕒 Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="divider" style="background: rgba(255, 255, 255, 0.2);"></div>
+            <p style="margin: 16px 0 6px;">&copy; 2025 United States International University - Africa</p>
+            <p style="margin: 6px 0;">Leave Management System | All Rights Reserved</p>
+            <p style="margin: 12px 0 0; font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);">
+                Built with Firebase • Secured with Enterprise-Grade Security • Mobile Responsive
+            </p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-backdrop" id="loginModal">
+        <div class="modal">
+            <button class="modal-close" id="closeLoginModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <h3>Staff Login</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="yourname@usiu.ac.ke" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <button type="button" class="login-toggle" id="showRegisterModal">Don't have an account? Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-backdrop" id="registerModal">
+        <div class="modal">
+            <button class="modal-close" id="closeRegisterModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <h3>Staff Registration</h3>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email Address</label>
+                    <input type="email" id="regEmail" placeholder="yourname@usiu.ac.ke" required>
+                </div>
+                <div class="form-group">
+                    <label for="regStaffId">Staff ID</label>
+                    <input type="text" id="regStaffId" placeholder="USIU-001" required>
+                </div>
+                <div class="form-group">
+                    <label for="regDepartment">Department</label>
+                    <select id="regDepartment" required>
+                        <option value="">Select Department</option>
+                        <option value="HR">Human Resources</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Academics">Academics</option>
+                        <option value="Administration">Administration</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Library">Library</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+                <button type="button" class="login-toggle" id="showLoginModal">Already have an account? Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics Dashboard - USIU Leave Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="student-layout">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Academics Department</h1>
+                    <p>Leave Management Portal</p>
+                </div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#requests" class="nav-link">My Requests</a>
+                <a href="#faculty" class="nav-link">Faculty</a>
+                <a href="#coverage" class="nav-link">Class Coverage</a>
+                <a href="#schedule" class="nav-link">Academic Calendar</a>
+            </div>
+            <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 120px;">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>Academics Department Dashboard</h2>
+                <p>Manage faculty leave and ensure academic continuity</p>
+                <div class="chips">
+                    <span class="chip">Academics</span>
+                    <span class="chip">Faculty Management</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary" id="newRequestBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    New Request
+                </button>
+                <button class="btn btn-secondary" id="coverageBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l-5.5 9h11z"/>
+                        <circle cx="17.5" cy="17.5" r="4.5"/>
+                        <path d="M3 13.5h8v8H3z"/>
+                    </svg>
+                    Coverage Plan
+                </button>
+            </div>
+        </div>
+
+        <!-- Academic Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Leave Balance</div>
+                <div class="value">19.5</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="label">Pending Requests</div>
+                <div class="value">1</div>
+            </div>
+            <div class="stat-card approved">
+                <div class="label">Classes Covered</div>
+                <div class="value">24</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Faculty Available</div>
+                <div class="value">45</div>
+            </div>
+        </div>
+
+        <!-- Faculty Overview -->
+        <section id="faculty" class="section" style="margin-top: 32px;">
+            <div class="page-header">
+                <div>
+                    <h2>Faculty Leave Status</h2>
+                    <p>Current availability of academic faculty members</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-blue), var(--usiu-light-blue)); display: grid; place-items: center; color: white; font-weight: 600;">DR</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Dr. Rachel Davis</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Computer Science</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <span class="status-pill approved">Available</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Teaching 3 courses this semester</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-gold), #ffc94d); display: grid; place-items: center; color: white; font-weight: 600;">JM</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Prof. James Miller</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Business Administration</p>
+                        </div>
+                    </div>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">On Leave</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Research Leave - Returns Jan 15</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-blue), var(--usiu-light-blue)); display: grid; place-items: center; color: white; font-weight: 600;">SB</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Dr. Sarah Brown</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">International Relations</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <span class="status-pill approved">Available</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Department Head</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-gold), #ffc94d); display: grid; place-items: center; color: white; font-weight: 600;">TC</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Dr. Thomas Chen</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Mathematics</p>
+                        </div>
+                    </div>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">On Leave</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Conference - Returns Dec 18</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class Coverage -->
+        <section id="coverage" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Class Coverage Management</h2>
+                    <p>Ensure academic continuity during faculty absences</p>
+                </div>
+                <button class="btn btn-primary" id="assignCoverageBtn">Assign Coverage</button>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">CS 301 - Data Structures</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Original Instructor: Dr. Rachel Davis
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill approved">Covered by Dr. Alice Johnson</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Dec 10-14, 2025</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">BUS 401 - Strategic Management</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Original Instructor: Prof. James Miller
+                    </p>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">Coverage Needed</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Jan 5-15, 2026</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">IR 201 - International Relations</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Original Instructor: Dr. Sarah Brown
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill neutral">No Coverage Needed</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Faculty available</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">MATH 301 - Advanced Calculus</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Original Instructor: Dr. Thomas Chen
+                    </p>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">Coverage Needed</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Dec 15-18, 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Leave Requests -->
+        <section id="requests" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>My Leave Requests</h2>
+                    <p>Track your academic leave applications</p>
+                </div>
+                <button class="btn btn-primary" id="addRequestBtn">Submit New Request</button>
+            </div>
+
+            <div class="request-list" id="myRequestList">
+                <!-- Request cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Academic Calendar Integration -->
+        <section id="schedule" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Academic Calendar</h2>
+                    <p>View leave requests in context of academic schedule</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="background: var(--bg-soft-blue); padding: 24px; border-radius: 16px;">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">December 2025 - Academic Period</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Final Exams</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">Dec 8-15, 2025</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #e74c3c;">Critical Period - No Leave</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Grading Period</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">Dec 16-20, 2025</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--usiu-gold);">Limited Leave</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Winter Break</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">Dec 21 - Jan 3</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #2ecc71;">Leave Allowed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Leave Management -->
+        <section class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Research Leave Management</h2>
+                    <p>Track and manage faculty research leave applications</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Active Research Leave</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Prof. James Miller - International Relations
+                    </p>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">Research Leave</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Nov 15 - Jan 15, 2026</p>
+                    </div>
+                    <div class="badge gold">Sabbatical Leave</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Conference Attendance</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Dr. Thomas Chen - Mathematics Conference
+                    </p>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">Conference Leave</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Dec 15-18, 2025</p>
+                    </div>
+                    <div class="badge">Professional Development</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Research Grant Work</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Dr. Sarah Brown - Grant Research
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill neutral">Scheduled</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Feb 1-14, 2026</p>
+                    </div>
+                    <div class="badge success">Approved</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/academics-dashboard.js"></script>
+</body>
+</html>

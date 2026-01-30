@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - USIU Leave System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>USIU Leave System</h1>
+                    <p>Admin Portal</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <span id="adminEmail" class="nav-link"></span>
+                <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-layout">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <p>Manage leave requests and system settings</p>
+                </div>
+                <button class="btn btn-primary" id="generateReportBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                    </svg>
+                    Generate Report
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="label">Total Staff</span>
+                    <span class="value" id="totalStaff">0</span>
+                </div>
+                <div class="stat-card pending">
+                    <span class="label">Pending Requests</span>
+                    <span class="value" id="totalPending">0</span>
+                </div>
+                <div class="stat-card approved">
+                    <span class="label">Approved This Month</span>
+                    <span class="value" id="totalApproved">0</span>
+                </div>
+                <div class="stat-card rejected">
+                    <span class="label">Rejected This Month</span>
+                    <span class="value" id="totalRejected">0</span>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h4>Leave Requests by Type</h4>
+                    <canvas id="leaveTypeChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h4>Monthly Leave Trend</h4>
+                    <canvas id="leaveTrendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Pending Requests Section -->
+            <div class="card">
+                <h3 class="feature-title">Pending Leave Requests</h3>
+                <div class="divider"></div>
+                
+                <div class="search-bar">
+                    <input type="text" id="searchStaff" placeholder="Search by staff name or ID...">
+                    <select id="departmentFilter">
+                        <option value="all">All Departments</option>
+                        <option value="HR">Human Resources</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Academics">Academics</option>
+                        <option value="Administration">Administration</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Library">Library</option>
+                    </select>
+                    <select id="leaveTypeFilter">
+                        <option value="all">All Leave Types</option>
+                        <option value="annual">Annual Leave</option>
+                        <option value="sick">Sick Leave</option>
+                        <option value="maternity">Maternity Leave</option>
+                        <option value="paternity">Paternity Leave</option>
+                        <option value="unpaid">Unpaid Leave</option>
+                        <option value="study">Study Leave</option>
+                        <option value="compassionate">Compassionate Leave</option>
+                    </select>
+                </div>
+
+                <div id="pendingRequests" class="request-list"></div>
+            </div>
+
+            <!-- All Requests Section -->
+            <div class="card" style="margin-top: 24px;">
+                <h3 class="feature-title">All Leave Requests</h3>
+                <div class="divider"></div>
+                
+                <div class="search-bar">
+                    <select id="allStatusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <input type="month" id="monthFilter">
+                </div>
+
+                <div id="allRequests" class="request-list"></div>
+            </div>
+
+            <!-- Attendance Management Section -->
+            <div class="card" style="margin-top: 24px;">
+                <h3 class="feature-title">Attendance Overview</h3>
+                <div class="divider"></div>
+                
+                <div class="search-bar">
+                    <input type="date" id="attendanceDate">
+                    <button class="btn btn-secondary" id="viewAttendanceBtn">View Attendance</button>
+                </div>
+
+                <div id="attendanceOverview" class="request-list"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Request Details Modal -->
+    <div class="modal-backdrop" id="requestModal">
+        <div class="modal large">
+            <button class="modal-close" id="closeRequestModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <h3>Leave Request Details</h3>
+            <div id="requestDetails"></div>
+            <div class="divider"></div>
+            <div class="actions">
+                <button class="btn btn-secondary" id="approveBtn">Approve</button>
+                <button class="btn btn-danger" id="rejectBtn">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

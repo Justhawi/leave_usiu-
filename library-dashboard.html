@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Dashboard - USIU Leave Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="student-layout">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Library Department</h1>
+                    <p>Leave Management Portal</p>
+                </div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#requests" class="nav-link">My Requests</a>
+                <a href="#staff" class="nav-link">Library Staff</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#schedule" class="nav-link">Schedule</a>
+            </div>
+            <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 120px;">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>Library Department Dashboard</h2>
+                <p>Manage library operations and staff coordination</p>
+                <div class="chips">
+                    <span class="chip">Library Services</span>
+                    <span class="chip">Information Resources</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary" id="newRequestBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    New Request
+                </button>
+                <button class="btn btn-secondary" id="servicesBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    Service Status
+                </button>
+            </div>
+        </div>
+
+        <!-- Library Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Leave Balance</div>
+                <div class="value">21.0</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="label">Pending Requests</div>
+                <div class="value">1</div>
+            </div>
+            <div class="stat-card approved">
+                <div class="label">Services Active</div>
+                <div class="value">95%</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Staff Coverage</div>
+                <div class="value">8/10</div>
+            </div>
+        </div>
+
+        <!-- Library Staff Overview -->
+        <section id="staff" class="section" style="margin-top: 32px;">
+            <div class="page-header">
+                <div>
+                    <h2>Library Staff Status</h2>
+                    <p>Current availability of library personnel</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-blue), var(--usiu-light-blue)); display: grid; place-items: center; color: white; font-weight: 600;">LM</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Laura Martinez</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Head Librarian</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <span class="status-pill approved">Available</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Managing library operations</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-gold), #ffc94d); display: grid; place-items: center; color: white; font-weight: 600;">JW</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Jennifer White</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Reference Librarian</p>
+                        </div>
+                    </div>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">On Leave</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Returns: Dec 25, 2025</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-blue), var(--usiu-light-blue)); display: grid; place-items: center; color: white; font-weight: 600;">RB</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Robert Brown</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Technical Services</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <span class="status-pill approved">Available</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Cataloging and systems</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--usiu-gold), #ffc94d); display: grid; place-items: center; color: white; font-weight: 600;">SK</div>
+                        <div>
+                            <h4 style="margin: 0; color: var(--usiu-blue);">Susan Kim</h4>
+                            <p style="margin: 4px 0 0; color: rgba(44, 62, 80, 0.6); font-size: 0.9rem;">Circulation Desk</p>
+                        </div>
+                    </div>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">On Leave</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Returns: Dec 30, 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Services Status -->
+        <section id="services" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Library Services Status</h2>
+                    <p>Current status of library services during staff absences</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Circulation Services</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Book check-out, returns, and renewal services
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill approved">Fully Operational</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Backup staff assigned</p>
+                    </div>
+                    <div class="badge success">Normal Hours</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Reference Services</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Research assistance and information services
+                    </p>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">Limited Service</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Reduced hours during leave</p>
+                    </div>
+                    <div class="badge gold">Limited Coverage</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Digital Resources</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Online databases, e-books, and digital collections
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill approved">Fully Available</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">24/7 online access</p>
+                    </div>
+                    <div class="badge success">Online Services</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Technical Services</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Cataloging, processing, and systems maintenance
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill approved">Operational</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Essential services maintained</p>
+                    </div>
+                    <div class="badge">Delayed Processing</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Leave Requests -->
+        <section id="requests" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>My Leave Requests</h2>
+                    <p>Track your library leave applications</p>
+                </div>
+                <button class="btn btn-primary" id="addRequestBtn">Submit New Request</button>
+            </div>
+
+            <div class="request-list" id="myRequestList">
+                <!-- Request cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Library Schedule -->
+        <section id="schedule" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Library Operating Schedule</h2>
+                    <p>Current library hours and service availability</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="background: var(--bg-soft-blue); padding: 24px; border-radius: 16px;">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">December 2025 Library Hours</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Monday - Thursday</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">8:00 AM - 8:00 PM</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #2ecc71;">Full Services</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Friday</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">8:00 AM - 6:00 PM</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--usiu-gold);">Limited Services</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Saturday</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">9:00 AM - 5:00 PM</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #2ecc71;">Full Services</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Sunday</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">12:00 PM - 6:00 PM</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--usiu-gold);">Study Hall Only</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Collections -->
+        <section class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Special Collections & Archives</h2>
+                    <p>Manage access to special collections during staff absences</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">African Studies Collection</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Specialized collection on African history and culture
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill approved">By Appointment</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Limited access during leave</p>
+                    </div>
+                    <div class="badge gold">Appointment Required</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">USIU Archives</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Historical documents and university archives
+                    </p>
+                    <div class="status-card gold">
+                        <span class="status-pill pending">Limited Access</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">Staff on leave</p>
+                    </div>
+                    <div class="badge">Restricted Access</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Digital Archives</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Online digitized collections and digital archives
+                    </p>
+                    <div class="status-card">
+                        <span class="status-pill approved">Fully Available</span>
+                        <p style="margin: 8px 0 0; font-size: 0.85rem; color: rgba(44, 62, 80, 0.6);">24/7 online access</p>
+                    </div>
+                    <div class="badge success">Online Access</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Spaces -->
+        <section class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Study Spaces & Facilities</h2>
+                    <p>Monitor availability of library study areas and facilities</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div style="background: var(--bg-soft-gold); padding: 24px; border-radius: 16px;">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Facility Availability</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Main Reading Room</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">Capacity: 150 seats</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #2ecc71;">85% Available</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Silent Study Area</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">Capacity: 50 seats</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #2ecc71;">92% Available</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Group Study Rooms</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">8 rooms available</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: var(--usiu-gold);">3 rooms booked</p>
+                        </div>
+                        <div style="background: white; padding: 16px; border-radius: 12px;">
+                            <h5 style="color: var(--usiu-gold); margin: 0 0 8px;">Computer Lab</h5>
+                            <p style="margin: 0; color: rgba(44, 62, 80, 0.78); font-size: 0.9rem;">30 workstations</p>
+                            <p style="margin: 8px 0 0; font-size: 0.85rem; color: #2ecc71;">All Available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/library-dashboard.js"></script>
+</body>
+</html>

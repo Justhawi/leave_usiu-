@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard - USIU Leave Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="student-layout">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Finance Department</h1>
+                    <p>Leave Management Portal</p>
+                </div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#requests" class="nav-link">My Requests</a>
+                <a href="#budget" class="nav-link">Budget Impact</a>
+                <a href="#approvals" class="nav-link">Approvals</a>
+                <a href="#reports" class="nav-link">Reports</a>
+            </div>
+            <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 120px;">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>Finance Department Dashboard</h2>
+                <p>Manage leave requests and monitor budget impact</p>
+                <div class="chips">
+                    <span class="chip">Finance</span>
+                    <span class="chip">Budget Control</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary" id="newRequestBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    New Request
+                </button>
+                <button class="btn btn-secondary" id="budgetReportBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                    </svg>
+                    Budget Report
+                </button>
+            </div>
+        </div>
+
+        <!-- Financial Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Leave Balance</div>
+                <div class="value">22.0</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="label">Pending Requests</div>
+                <div class="value">2</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Monthly Leave Cost</div>
+                <div class="value">$4,250</div>
+            </div>
+            <div class="stat-card approved">
+                <div class="label">Budget Utilization</div>
+                <div class="value">68%</div>
+            </div>
+        </div>
+
+        <!-- Budget Impact Analysis -->
+        <section id="budget" class="section" style="margin-top: 32px;">
+            <div class="page-header">
+                <div>
+                    <h2>Budget Impact Analysis</h2>
+                    <p>Monitor financial impact of leave requests on department budget</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Current Month Leave Cost</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--usiu-gold); margin-bottom: 16px;">$4,250</div>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Total cost of approved leave for current month including temporary replacements
+                    </p>
+                    <div class="badge">Within Budget</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">YTD Leave Expenditure</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--usiu-blue); margin-bottom: 16px;">$38,450</div>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Year-to-date total expenditure on leave-related costs and replacements
+                    </p>
+                    <div class="badge success">On Track</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Projected Annual Cost</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--usiu-light-blue); margin-bottom: 16px;">$52,000</div>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Projected annual leave cost based on current trends and patterns
+                    </p>
+                    <div class="badge gold">Monitor Closely</div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Budget Remaining</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: #2ecc71; margin-bottom: 16px;">$13,550</div>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Remaining budget for leave costs for the current fiscal year
+                    </p>
+                    <div class="badge success">Healthy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pending Approvals -->
+        <section id="approvals" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Pending Finance Approvals</h2>
+                    <p>Review leave requests requiring financial department approval</p>
+                </div>
+            </div>
+
+            <div class="request-list" id="pendingApprovalsList">
+                <!-- Request cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- My Leave Requests -->
+        <section id="requests" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>My Leave Requests</h2>
+                    <p>Track your leave applications and approvals</p>
+                </div>
+                <button class="btn btn-primary" id="addRequestBtn">Submit New Request</button>
+            </div>
+
+            <div class="request-list" id="myRequestList">
+                <!-- Request cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Financial Reports -->
+        <section id="reports" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Financial Reports</h2>
+                    <p>Generate and export financial reports related to leave management</p>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary" id="generateReportBtn">Generate Report</button>
+                    <button class="btn btn-secondary" id="exportAllBtn">Export All</button>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Monthly Leave Cost Report</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Detailed breakdown of leave costs by department and leave type for current month
+                    </p>
+                    <div class="actions">
+                        <button class="btn btn-secondary">View Report</button>
+                        <button class="btn btn-secondary">Export CSV</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Budget vs Actual Analysis</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Comparison of budgeted leave costs against actual expenditures
+                    </p>
+                    <div class="actions">
+                        <button class="btn btn-secondary">View Report</button>
+                        <button class="btn btn-secondary">Export CSV</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Leave Cost Projections</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Forecast of future leave costs based on historical data and trends
+                    </p>
+                    <div class="actions">
+                        <button class="btn btn-secondary">View Report</button>
+                        <button class="btn btn-secondary">Export CSV</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Department Cost Analysis</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Analysis of leave costs across all departments with variance analysis
+                    </p>
+                    <div class="actions">
+                        <button class="btn btn-secondary">View Report</button>
+                        <button class="btn btn-secondary">Export CSV</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost Optimization -->
+        <section class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Cost Optimization Insights</h2>
+                    <p>Recommendations for optimizing leave-related costs</p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                    </div>
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Peak Period Planning</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Consider implementing leave restrictions during peak financial periods to reduce overtime costs
+                    </p>
+                    <div class="badge gold">Potential Savings: $8,500</div>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon blue" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                        </svg>
+                    </div>
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Cross-Training Program</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Invest in cross-training to reduce dependency on temporary staff during leave periods
+                    </p>
+                    <div class="badge success">Long-term Savings</div>
+                </div>
+
+                <div class="card">
+                    <div class="feature-icon gold" style="margin-bottom: 16px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Leave Carry-over Policy</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Review leave carry-over policy to better manage annual budget planning
+                    </p>
+                    <div class="badge">Policy Review Needed</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/finance-dashboard.js"></script>
+</body>
+</html>

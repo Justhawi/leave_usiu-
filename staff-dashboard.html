@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - USIU Leave System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>USIU Leave System</h1>
+                    <p>Staff Portal</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <span id="userEmail" class="nav-link"></span>
+                <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="student-layout">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h2>Welcome, <span id="userName"></span></h2>
+                    <p>Manage your leave requests and attendance</p>
+                    <div class="chips">
+                        <span class="chip" id="staffDept"></span>
+                        <span class="chip" id="staffId"></span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="newLeaveBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    New Leave Request
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="label">Available Leave Days</span>
+                    <span class="value" id="availableDays">21</span>
+                </div>
+                <div class="stat-card pending">
+                    <span class="label">Pending Requests</span>
+                    <span class="value" id="pendingCount">0</span>
+                </div>
+                <div class="stat-card approved">
+                    <span class="label">Approved Requests</span>
+                    <span class="value" id="approvedCount">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="label">Days Used</span>
+                    <span class="value" id="usedDays">0</span>
+                </div>
+            </div>
+
+            <!-- Leave Requests Section -->
+            <div class="card">
+                <h3 class="feature-title">My Leave Requests</h3>
+                <div class="divider"></div>
+                
+                <div class="search-bar">
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <div id="leaveRequests" class="request-list"></div>
+            </div>
+
+            <!-- Attendance Section -->
+            <div class="card" style="margin-top: 24px;">
+                <h3 class="feature-title">Attendance Records</h3>
+                <div class="divider"></div>
+                
+                <div class="search-bar">
+                    <input type="month" id="attendanceMonth" value="">
+                    <button class="btn btn-secondary" id="markAttendanceBtn">Mark Today's Attendance</button>
+                </div>
+
+                <div id="attendanceRecords" class="request-list"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Leave Request Modal -->
+    <div class="modal-backdrop" id="leaveModal">
+        <div class="modal large">
+            <button class="modal-close" id="closeLeaveModal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <h3>New Leave Request</h3>
+            <form id="leaveForm">
+                <div class="form-group">
+                    <label for="leaveType">Leave Type</label>
+                    <select id="leaveType" required>
+                        <option value="">Select Leave Type</option>
+                        <option value="annual">Annual Leave</option>
+                        <option value="sick">Sick Leave</option>
+                        <option value="maternity">Maternity Leave</option>
+                        <option value="paternity">Paternity Leave</option>
+                        <option value="unpaid">Unpaid Leave</option>
+                        <option value="study">Study Leave</option>
+                        <option value="compassionate">Compassionate Leave</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason</label>
+                    <textarea id="reason" placeholder="Please provide a reason for your leave request" required></textarea>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/staff-dashboard.js"></script>
+</body>
+</html>

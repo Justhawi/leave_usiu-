@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard - USIU Leave Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-layout">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18.5c-4.28-1.04-7.5-5.32-7.5-9.5V8.3l7.5-3.75 7.5 3.75v2.7c0 4.18-3.22 8.46-7.5 9.5z"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>HR Department</h1>
+                    <p>Leave Management Portal</p>
+                </div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#requests" class="nav-link">Leave Requests</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+                <a href="#policies" class="nav-link">Policies</a>
+                <a href="#reports" class="nav-link">Reports</a>
+            </div>
+            <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 120px;">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>HR Dashboard</h2>
+                <p>Manage leave policies and oversee all department requests</p>
+                <div class="chips">
+                    <span class="chip">Human Resources</span>
+                    <span class="chip">Administrative Access</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-primary" id="newPolicyBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    New Policy
+                </button>
+                <button class="btn btn-secondary" id="exportBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                    Export Report
+                </button>
+            </div>
+        </div>
+
+        <!-- Statistics Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label">Total Staff</div>
+                <div class="value">247</div>
+            </div>
+            <div class="stat-card pending">
+                <div class="label">Pending Requests</div>
+                <div class="value">18</div>
+            </div>
+            <div class="stat-card approved">
+                <div class="label">Approved Today</div>
+                <div class="value">12</div>
+            </div>
+            <div class="stat-card rejected">
+                <div class="label">Rejected This Week</div>
+                <div class="value">3</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h4>Leave Trends by Department</h4>
+                <canvas id="leaveTrendsChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h4>Leave Types Distribution</h4>
+                <canvas id="leaveTypesChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h4>Monthly Leave Balance</h4>
+                <canvas id="balanceChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h4>Approval Rate</h4>
+                <canvas id="approvalRateChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Recent Requests Section -->
+        <section id="requests">
+            <div class="page-header">
+                <div>
+                    <h2>Recent Leave Requests</h2>
+                    <p>Review and manage leave requests from all departments</p>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search by name or department..." id="searchInput">
+                    <select id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <select id="departmentFilter">
+                        <option value="">All Departments</option>
+                        <option value="HR">Human Resources</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Academics">Academics</option>
+                        <option value="Administration">Administration</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Library">Library</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="request-list" id="requestList">
+                <!-- Request cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Policies Section -->
+        <section id="policies" class="section" style="margin-top: 48px;">
+            <div class="page-header">
+                <div>
+                    <h2>Leave Policies</h2>
+                    <p>Manage and configure leave policies for the organization</p>
+                </div>
+                <button class="btn btn-primary" id="addPolicyBtn">Add New Policy</button>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Annual Leave Policy</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Full-time staff are entitled to 21 working days of annual leave per year, 
+                        accrued monthly and subject to approval by department heads.
+                    </p>
+                    <div class="badge">21 Days/Year</div>
+                    <div class="actions" style="margin-top: 16px;">
+                        <button class="btn btn-secondary">Edit Policy</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Sick Leave Policy</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Staff are entitled to up to 10 working days of sick leave per year, 
+                        with medical certificate required for absences exceeding 2 days.
+                    </p>
+                    <div class="badge">10 Days/Year</div>
+                    <div class="actions" style="margin-top: 16px;">
+                        <button class="btn btn-secondary">Edit Policy</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Maternity Leave Policy</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Female staff are entitled to 90 calendar days of maternity leave, 
+                        payable at full salary subject to statutory requirements.
+                    </p>
+                    <div class="badge gold">90 Days</div>
+                    <div class="actions" style="margin-top: 16px;">
+                        <button class="btn btn-secondary">Edit Policy</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--usiu-blue); margin-bottom: 16px;">Study Leave Policy</h4>
+                    <p style="color: rgba(44, 62, 80, 0.78); margin-bottom: 16px;">
+                        Staff may apply for study leave for approved courses, 
+                        maximum of 30 working days per academic year.
+                    </p>
+                    <div class="badge">30 Days/Year</div>
+                    <div class="actions" style="margin-top: 16px;">
+                        <button class="btn btn-secondary">Edit Policy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/hr-dashboard.js"></script>
+</body>
+</html>
